@@ -21,11 +21,12 @@ nav {
 }
 
 /* Estilo do ícone do menu hambúrguer */
-/* .menu-icon {
-
-  2ª Digitação (Aqui) 
-
-} */
+.menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
 
 /* Estilo da lista de navegação */
 .nav-list {
@@ -33,7 +34,7 @@ nav {
   list-style: none; /* Remove os marcadores de lista */
 
 /* Move a lista para o lado direito */
-  /* margin-left: auto;  */
+  margin-left: auto; 
 }
 
 /* Estilo dos itens da lista */
@@ -48,17 +49,45 @@ nav {
   font-size: 1rem; /* Tamanho da fonte */
 }
 
+/* Criar uma animação */
+@keyframes abrirMenu {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 300px;
+    opacity: 1;
+  }
+}
+
+/* Animação de deslizar esquerda para direita */
+@keyframes deslizarDireita {
+  from {transform: translateX(-100%);}
+  to {transform: translateX(0);}
+}
+
+/* Aparecer com Zoom */
+@keyframes zoom {
+  from { transform: scaleY(0); transform-origin: top;}
+  to { transform: scaleY(1); transform-origin: top;}
+}
+
 /* Estilos para telas pequenas (max-width: 768px) */
 @media (max-width: 768px) {
-  /* .menu-icon {
-
-    3ª Digitação (Aqui)
-    
+  .menu-icon {
+    display: block;
   }
 
   .nav-list {
-
-  } */
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
 
   .nav-list li {
     margin: 1rem 0; /* Espaçamento entre os itens */
@@ -68,5 +97,6 @@ nav {
   /* Classe ativada via JavaScript para exibir a lista */
   .nav-list.active {
     display: flex; /* Exibe a lista quando a classe "active" é adicionada */
+    animation: zoom 1.5s ease forwards;
   }
 }
